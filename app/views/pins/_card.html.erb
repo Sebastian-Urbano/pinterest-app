@@ -1,0 +1,19 @@
+<div class="col-sm">
+      <div class="card" style="width: 18rem;">
+      	<%= link_to pin_path(pin) do %>
+      		 <img src=<%=pin.photo %> class="card-img-top" >
+ 		<% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= pin.name %></h5>
+    <p class="card-text"><%= pin.desc %></p>
+    <p class="card-text">likes: <%= pin.likes.count %></p>
+
+    <a href="/pins/<%=pin.id%>/like" data-method="POST" class="btn btn-primary">Me gusta</a>
+    <% if pin.user == current_user %>
+
+    	<%= link_to 'Editar', edit_pin_path(pin), class: 'btn btn-primary' %>
+    	<%= link_to 'Destruir', pin_path(pin), method: 'DELETE', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+</div>
